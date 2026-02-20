@@ -219,7 +219,11 @@ class Geometria:
         pass
     
     def volumen_cubo(self, lado):
+        if lado <= 0:
+            return 0
+        return lado ** 3
         """
+        Commit 10
         Calcula el volumen de un cubo.
         
         Args:
