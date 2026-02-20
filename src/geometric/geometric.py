@@ -68,7 +68,11 @@ class Geometria:
         pass
     
     def perimetro_triangulo(self, lado1, lado2, lado3):
+        if lado1 <= 0 or lado2 <= 0 or lado3 <= 0:
+             return 0
+        return lado1 + lado2 + lado3
         """
+        Commit 5
         Calcula el perímetro de un triángulo.
         
         Args:
