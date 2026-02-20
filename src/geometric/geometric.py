@@ -98,7 +98,11 @@ class Geometria:
         pass
     
     def area_trapecio(self, base_mayor, base_menor, altura):
+        if base_mayor <= 0 or base_menor <= 0 or altura <= 0:
+            return 0
+        return ((base_mayor + base_menor) * altura) / 2
         """
+        Commit 3
         Calcula el área de un trapecio.
         
         Args:
