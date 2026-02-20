@@ -55,7 +55,12 @@ class Geometria:
         pass
     
     def area_triangulo(self, base, altura):
+        def area_triangulo(self, base, altura):
+            if base <= 0 or altura <= 0:
+                return 0
+            return (base * altura) / 2
         """
+        Commit 6
         Calcula el área de un triángulo.
         
         Args:
