@@ -203,7 +203,11 @@ class Geometria:
         pass
     
     def perimetro_hexagono_regular(self, lado):
+        if lado <= 0:
+            return 0
+        return 6 * lado
         """
+        Commit 9
         Calcula el perímetro de un hexágono regular.
         
         Args:
