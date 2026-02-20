@@ -82,7 +82,16 @@ class Geometria:
         pass
     
     def es_triangulo_valido(self, lado1, lado2, lado3):
+        if lado1 <= 0 or lado2 <= 0 or lado3 <= 0:
+            return False
+    
+        return (
+            lado1 + lado2 > lado3 and
+            lado1 + lado3 > lado2 and
+            lado2 + lado3 > lado1
+        )
         """
+        Commit 4
         Verifica si tres longitudes pueden formar un triángulo válido.
         Un triángulo es válido si la suma de las longitudes de dos lados
         es mayor que la longitud del tercer lado, para todos los lados.
