@@ -168,7 +168,12 @@ class Geometria:
         pass
     
     def perimetro_pentagono_regular(self, lado):
+        if lado <= 0:
+            return 0
+        return 5 * lado
+
         """
+        Commit 7
         Calcula el perímetro de un pentágono regular.
         
         Args:
