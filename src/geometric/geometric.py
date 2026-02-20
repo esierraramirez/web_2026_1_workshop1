@@ -5,7 +5,9 @@ class Geometria:
     """
     
     def area_rectangulo(self, base, altura):
+        return base * altura
         """
+        Commit 11
         Calcula el área de un rectángulo.
         
         Args:
