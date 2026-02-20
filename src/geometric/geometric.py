@@ -125,6 +125,10 @@ class Geometria:
         pass
     
     def area_pentagono_regular(self, lado, apotema):
+        if lado <= 0 or apotema <= 0:
+            return 0
+        return (5 * lado * apotema) / 2
+    
         """
         Calcula el área de un pentágono regular.
         
