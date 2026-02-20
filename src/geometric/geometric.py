@@ -185,7 +185,12 @@ class Geometria:
         pass
     
     def area_hexagono_regular(self, lado, apotema):
+        if lado <= 0 or apotema <= 0:
+            return 0
+         # Área = (Perímetro * apotema) / 2, perímetro = 6 * lado
+        return (6 * lado * apotema) / 2
         """
+        Commit 8
         Calcula el área de un hexágono regular.
         
         Args:
