@@ -112,7 +112,11 @@ class Geometria:
         pass
     
     def area_rombo(self, diagonal_mayor, diagonal_menor):
+        if diagonal_mayor <= 0 or diagonal_menor <= 0:
+            return 0
+        return (diagonal_mayor * diagonal_menor) / 2
         """
+        Commit 2
         Calcula el área de un rombo usando sus diagonales.
         
         Args:
