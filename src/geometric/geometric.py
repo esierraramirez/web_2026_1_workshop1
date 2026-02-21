@@ -317,7 +317,15 @@ class Geometria:
         pass
     
     def area_superficie_cilindro(self, radio, altura):
+        if radio <= 0:
+            return 0
+        # Si altura == 0, el test espera SOLO las dos bases: 2*pi*r^2
+        if altura <= 0:
+            return 2 * pi * (radio ** 2)
+        # Área total = 2*pi*r*h + 2*pi*r^2
+        return 2 * pi * radio * altura + 2 * pi * (radio ** 2)
         """
+        Commit 19
         Calcula el área de la superficie de un cilindro.
         
         Args:
