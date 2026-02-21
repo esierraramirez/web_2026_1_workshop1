@@ -413,7 +413,11 @@ class Geometria:
         pass
     
     def area_poligono_regular(self, num_lados, lado, apotema):
+        if num_lados <= 0 or lado <= 0 or apotema <= 0:
+            return 0
+        return (num_lados * lado * apotema) / 2
         """
+        commit 24
         Calcula el área de un polígono regular.
         
         Args:
