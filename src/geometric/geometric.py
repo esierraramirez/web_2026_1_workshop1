@@ -373,7 +373,10 @@ class Geometria:
         pass
     
     def pendiente_recta(self, x1, y1, x2, y2):
+        # Debe lanzar ZeroDivisionError si x2 == x1 (línea vertical)
+        return (y2 - y1) / (x2 - x1)
         """
+        Commit 22
         Calcula la pendiente de una recta que pasa por dos puntos.
         
         Args:
