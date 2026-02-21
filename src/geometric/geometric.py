@@ -356,7 +356,9 @@ class Geometria:
         pass
     
     def punto_medio(self, x1, y1, x2, y2):
+        return ((x1 + x2) / 2, (y1 + y2) / 2)
         """
+        Commit 21
         Calcula el punto medio entre dos puntos en un plano 2D.
         
         Args:
