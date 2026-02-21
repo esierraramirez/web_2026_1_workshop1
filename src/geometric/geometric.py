@@ -391,7 +391,14 @@ class Geometria:
         pass
     
     def ecuacion_recta(self, x1, y1, x2, y2):
+        # Forma: Ax + By + C = 0
+        # A = y1 - y2, B = x2 - x1, C = x1*y2 - x2*y1
+        A = y1 - y2
+        B = x2 - x1
+        C = x1 * y2 - x2 * y1
+        return (A, B, C)
         """
+        Commit 23
         Obtiene los coeficientes de la ecuación de una recta en la forma Ax + By + C = 0.
         
         Args:
