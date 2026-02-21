@@ -268,6 +268,9 @@ class Geometria:
         pass
     
     def volumen_esfera(self, radio):
+        if radio <= 0:
+            return 0
+        return (4/3) * pi * (radio ** 3)
         """
         Calcula el volumen de una esfera.
         
