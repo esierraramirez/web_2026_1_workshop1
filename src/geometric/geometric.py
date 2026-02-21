@@ -300,7 +300,11 @@ class Geometria:
         pass
     
     def volumen_cilindro(self, radio, altura):
+        if radio <= 0 or altura <= 0:
+            return 0
+        return pi * (radio ** 2) * altura
         """
+        Commit 18
         Calcula el volumen de un cilindro.
         
         Args:
