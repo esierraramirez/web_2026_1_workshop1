@@ -4,6 +4,30 @@ class Matrix:
     Clase con métodos para operaciones sobre matrices.
     Incluye operaciones aritméticas, propiedades y transformaciones matriciales.
     """
+    
+    def _dims(self, matriz):
+        """
+        Retorna (filas, columnas) de una matriz (lista de listas).
+        Valida que sea rectangular (todas las filas del mismo tamaño).
+        """
+        if matriz is None:
+            raise ValueError("La matriz no puede ser None.")
+
+        if matriz == []:
+            return (0, 0)
+
+        if not isinstance(matriz, list) or not all(isinstance(fila, list) for fila in matriz):
+            raise TypeError("La matriz debe ser una lista de listas.")
+
+        filas = len(matriz)
+        cols = len(matriz[0]) if filas > 0 else 0
+
+        # Permite [[], [], ...] como matriz vacía por filas
+        for fila in matriz:
+            if len(fila) != cols:
+                raise ValueError("La matriz debe ser rectangular (filas del mismo tamaño).")
+
+        return (filas, cols)
 
     def suma_matrices(self, A, B):
         filasA, colsA = self._dims(A)
