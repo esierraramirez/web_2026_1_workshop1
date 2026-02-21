@@ -5,6 +5,18 @@ class Strings:
     """
     
     def es_palindromo(self, texto):
+        s = ""
+        for ch in texto.lower():
+            if ch.isalnum():
+                s += ch
+        # comparar sin slicing
+        i, j = 0, len(s) - 1
+        while i < j:
+            if s[i] != s[j]:
+                return False
+            i += 1
+            j -= 1
+        return True
         """
         Verifica si una cadena es un palíndromo (se lee igual de izquierda a derecha y viceversa).
         
@@ -17,6 +29,12 @@ class Strings:
         pass
     
     def invertir_cadena(self, texto):
+        inv = ""
+        i = len(texto) - 1
+        while i >= 0:
+            inv += texto[i]
+            i -= 1
+        return inv
         """
         Invierte una cadena de texto sin usar slicing ni reversed().
         
@@ -29,6 +47,12 @@ class Strings:
         pass
     
     def contar_vocales(self, texto):
+        vocales = "aeiouAEIOU"
+        c = 0
+        for ch in texto:
+            if ch in vocales:
+                c += 1
+        return c
         """
         Cuenta el número de vocales en una cadena.
         
@@ -41,6 +65,12 @@ class Strings:
         pass
     
     def contar_consonantes(self, texto):
+        vocales = "aeiouAEIOU"
+        c = 0
+        for ch in texto:
+            if ch.isalpha() and ch not in vocales:
+                c += 1
+        return c
         """
         Cuenta el número de consonantes en una cadena.
         
@@ -53,6 +83,30 @@ class Strings:
         pass
     
     def es_anagrama(self, texto1, texto2):
+        # quitar espacios y pasar a minúscula
+        a = ""
+        b = ""
+        for ch in texto1.lower():
+            if ch != " ":
+                a += ch
+        for ch in texto2.lower():
+            if ch != " ":
+                b += ch
+
+        if len(a) != len(b):
+            return False
+
+        # contar frecuencias sin usar sort
+        freq = {}
+        for ch in a:
+            freq[ch] = freq.get(ch, 0) + 1
+        for ch in b:
+            if ch not in freq:
+                return False
+            freq[ch] -= 1
+            if freq[ch] < 0:
+                return False
+        return True
         """
         Verifica si dos cadenas son anagramas (contienen exactamente los mismos caracteres).
         
@@ -66,6 +120,17 @@ class Strings:
         pass
     
     def contar_palabras(self, texto):
+        # separa por espacios múltiples
+        count = 0
+        en_palabra = False
+        for ch in texto:
+            if ch != " " and ch != "\t" and ch != "\n":
+                if not en_palabra:
+                    count += 1
+                    en_palabra = True
+            else:
+                en_palabra = False
+        return count
         """
         Cuenta el número de palabras en una cadena.
         
@@ -78,6 +143,19 @@ class Strings:
         pass
     
     def palabras_mayus(self, texto):
+        resultado = ""
+        nueva = True
+        for ch in texto:
+            if ch == " ":
+                resultado += ch
+                nueva = True
+            else:
+                if nueva and ch.isalpha():
+                    resultado += ch.upper()
+                else:
+                    resultado += ch
+                nueva = False
+        return resultado
         """
         Pon en Mayuscula la primera letra de cada palabra en una cadena.
         
@@ -90,6 +168,17 @@ class Strings:
         pass
     
     def eliminar_espacios_duplicados(self, texto):
+        out = ""
+        prev_space = False
+        for ch in texto:
+            if ch == " ":
+                if not prev_space:
+                    out += ch
+                prev_space = True
+            else:
+                out += ch
+                prev_space = False
+        return out.strip()
         """
         Elimina espacios duplicados en una cadena.
         
@@ -102,6 +191,18 @@ class Strings:
         pass
     
     def es_numero_entero(self, texto):
+        if texto == "" or texto is None:
+            return False
+        i = 0
+        if texto[0] in "+-":
+            if len(texto) == 1:
+                return False
+            i = 1
+        while i < len(texto):
+            if texto[i] < "0" or texto[i] > "9":
+                return False
+            i += 1
+        return True
         """
         Verifica si una cadena representa un número entero sin usar isdigit().
         
@@ -114,6 +215,16 @@ class Strings:
         pass
     
     def cifrar_cesar(self, texto, desplazamiento):
+        d = desplazamiento % 26
+        out = ""
+        for ch in texto:
+            if "a" <= ch <= "z":
+                out += chr(((ord(ch) - ord("a") + d) % 26) + ord("a"))
+            elif "A" <= ch <= "Z":
+                out += chr(((ord(ch) - ord("A") + d) % 26) + ord("A"))
+            else:
+                out += ch
+        return out
         """
         Aplica el cifrado César a una cadena de texto.
         
@@ -127,6 +238,7 @@ class Strings:
         pass
     
     def descifrar_cesar(self, texto, desplazamiento):
+        return self.cifrar_cesar(texto, -desplazamiento)
         """
         Descifra una cadena cifrada con el método César.
         
@@ -140,6 +252,20 @@ class Strings:
         pass
     
     def encontrar_subcadena(self, texto, subcadena):
+        if subcadena == "":
+            return []
+        posiciones = []
+        n = len(texto)
+        m = len(subcadena)
+        for i in range(n - m + 1):
+            ok = True
+            for j in range(m):
+                if texto[i + j] != subcadena[j]:
+                    ok = False
+                    break
+            if ok:
+                posiciones.append(i)
+        return posiciones
         """
         Encuentra todas las posiciones de una subcadena en un texto sin usar find() o index().
         
