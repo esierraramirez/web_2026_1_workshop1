@@ -1,4 +1,6 @@
+from math import pi, sqrt
 class Geometria:
+    
     """
     Class with geometric exercises.
     Include basic and funny operations in 2D and 3D.
@@ -39,7 +41,11 @@ class Geometria:
         pass
     
     def area_circulo(self, radio):
+        if radio <= 0:
+            return 0
+        return pi * (radio ** 2)
         """
+        Commit 13
         Calcula el área de un círculo.
         
         Args:
