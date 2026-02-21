@@ -431,7 +431,11 @@ class Geometria:
         pass
     
     def perimetro_poligono_regular(self, num_lados, lado):
+        if num_lados <= 0 or lado <= 0:
+            return 0
+        return num_lados * lado
         """
+        commit 25
         Calcula el perímetro de un polígono regular.
         
         Args:
