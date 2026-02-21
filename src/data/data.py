@@ -42,12 +42,12 @@ class Data:
         pass
     
     def eliminar_duplicados(self, lista):
-        # Sin set(), manteniendo orden
         resultado = []
         for item in lista:
             existe = False
             for r in resultado:
-                if r == item:
+                # duplicado solo si es el mismo tipo Y el mismo valor
+                if type(r) is type(item) and r == item:
                     existe = True
                     break
             if not existe:
