@@ -272,6 +272,7 @@ class Geometria:
             return 0
         return (4/3) * pi * (radio ** 3)
         """
+        Commit 16
         Calcula el volumen de una esfera.
         
         Args:
@@ -283,7 +284,11 @@ class Geometria:
         pass
     
     def area_superficie_esfera(self, radio):
+        if radio <= 0:
+            return 0
+        return 4 * pi * (radio ** 2)
         """
+        Commit 17
         Calcula el área de la superficie de una esfera.
         
         Args:
