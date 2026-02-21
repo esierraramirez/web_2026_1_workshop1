@@ -57,7 +57,11 @@ class Geometria:
         pass
     
     def perimetro_circulo(self, radio):
+        if radio <= 0:
+            return 0
+        return 2 * pi * radio
         """
+        Commit 14
         Calcula el perímetro (circunferencia) de un círculo.
         
         Args:
