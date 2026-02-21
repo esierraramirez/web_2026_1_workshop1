@@ -338,7 +338,10 @@ class Geometria:
         pass
     
     def distancia_entre_puntos(self, x1, y1, x2, y2):
+        return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+
         """
+        Commit 20
         Calcula la distancia euclidiana entre dos puntos en un plano 2D.
         
         Args:
