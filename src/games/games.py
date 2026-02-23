@@ -1,5 +1,21 @@
+import random
 class Games:
     def piedra_papel_tijera(self, jugador1, jugador2):
+        j1 = jugador1.lower()
+        j2 = jugador2.lower()
+
+        if j1 == j2:
+            return "empate"
+
+        gana = {
+            ("piedra", "tijera"),
+            ("tijera", "papel"),
+            ("papel", "piedra"),
+        }
+
+        if (j1, j2) in gana:
+            return "jugador1"
+        return "jugador2"
         """
         Determina el ganador del juego piedra, papel o tijera.
         
@@ -18,6 +34,11 @@ class Games:
         pass
     
     def adivinar_numero_pista(self, numero_secreto, intento):
+        if intento == numero_secreto:
+            return "correcto"
+        if intento > numero_secreto:
+            return "muy alto"
+        return "muy bajo"
         """
         Proporciona pistas para un juego de adivinanza de números.
         
@@ -31,6 +52,25 @@ class Games:
         pass
     
     def ta_te_ti_ganador(self, tablero):
+        # Filas
+        for i in range(3):
+            if tablero[i][0] != " " and tablero[i][0] == tablero[i][1] == tablero[i][2]:
+                return tablero[i][0]
+
+        # Columnas
+        for j in range(3):
+            if tablero[0][j] != " " and tablero[0][j] == tablero[1][j] == tablero[2][j]:
+                return tablero[0][j]
+
+        # Diagonales
+        if tablero[0][0] != " " and tablero[0][0] == tablero[1][1] == tablero[2][2]:
+            return tablero[0][0]
+        if tablero[0][2] != " " and tablero[0][2] == tablero[1][1] == tablero[2][0]:
+            return tablero[0][2]
+
+        # Si no hay ganador: empate o continúa
+        hay_vacios = any(" " in fila for fila in tablero)
+        return "continua" if hay_vacios else "empate"
         """
         Verifica si hay un ganador en un tablero de tic-tac-toe.
         
@@ -48,6 +88,7 @@ class Games:
         pass
     
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
+        return [random.choice(colores_disponibles) for _ in range(longitud)]
         """
         Genera una combinación aleatoria para el juego Mastermind.
         
@@ -65,6 +106,28 @@ class Games:
         pass
     
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
+        # Debe moverse en línea recta
+        if desde_fila != hasta_fila and desde_col != hasta_col:
+            return False
+
+        # No moverse
+        if desde_fila == hasta_fila and desde_col == hasta_col:
+            return False
+
+        # Movimiento horizontal
+        if desde_fila == hasta_fila:
+            paso = 1 if hasta_col > desde_col else -1
+            for c in range(desde_col + paso, hasta_col, paso):
+                if tablero[desde_fila][c] != " ":
+                    return False
+            return True
+
+        # Movimiento vertical
+        paso = 1 if hasta_fila > desde_fila else -1
+        for f in range(desde_fila + paso, hasta_fila, paso):
+            if tablero[f][desde_col] != " ":
+                return False
+        return True
         """
         Valida si un movimiento de torre en ajedrez es legal.
         
