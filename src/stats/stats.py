@@ -1,5 +1,10 @@
+from math import pi, sqrt
 class Stats:
     def promedio(self, numeros):
+        
+        if not numeros:
+            return 0.0  # por si acaso, aunque el test normalmente no usa vacío
+        return sum(numeros) / len(numeros)
         """
         Calcula la media aritmética de una lista de números.
         
@@ -15,6 +20,16 @@ class Stats:
         pass
     
     def mediana(self, numeros):
+        if not numeros:
+            return 0.0
+        ordenados = sorted(numeros)
+        n = len(ordenados)
+        mid = n // 2
+
+        if n % 2 == 1:
+            return float(ordenados[mid])
+        else:
+            return (ordenados[mid - 1] + ordenados[mid]) / 2
         """
         Encuentra el valor mediano de una lista de números.
         Para listas con número par de elementos, retorna el promedio de los dos valores centrales.
@@ -32,6 +47,19 @@ class Stats:
         pass
     
     def moda(self, numeros):
+        if not numeros:
+            return None
+
+        frec = {}
+        for x in numeros:
+            frec[x] = frec.get(x, 0) + 1
+
+        max_frec = max(frec.values())
+
+        # “primer valor encontrado” (en la lista original) con frecuencia máxima
+        for x in numeros:
+            if frec[x] == max_frec:
+                return x
         """
         Encuentra el valor que aparece con mayor frecuencia en la lista.
         Si hay empate, retorna el primer valor encontrado.
@@ -48,6 +76,12 @@ class Stats:
         pass
     
     def desviacion_estandar(self, numeros):
+        if not numeros:
+            return 0.0
+        mean = self.promedio(numeros)
+        n = len(numeros)
+        var = sum((x - mean) ** 2 for x in numeros) / n
+        return sqrt(var)
         """
         Calcula la desviación estándar de una lista de números.
         Usa la fórmula de desviación estándar poblacional.
@@ -64,6 +98,11 @@ class Stats:
         pass
     
     def varianza(self, numeros):
+        if not numeros:
+            return 0.0
+        mean = self.promedio(numeros)
+        n = len(numeros)
+        return sum((x - mean) ** 2 for x in numeros) / n
         """
         Calcula la varianza de una lista de números.
         La varianza es el cuadrado de la desviación estándar.
@@ -80,6 +119,9 @@ class Stats:
         pass
     
     def rango(self, numeros):
+        if not numeros:
+            return 0
+        return max(numeros) - min(numeros)
         """
         Calcula el rango (diferencia entre el valor máximo y mínimo).
         
