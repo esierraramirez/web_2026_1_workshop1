@@ -5,6 +5,9 @@ class Magic:
     """
     
     def fibonacci(self, n):
+        # ✅ si es negativo, el test espera None
+        if n < 0:
+            return None
         if n == 0:
             return 0
         if n == 1:
@@ -128,6 +131,8 @@ class Magic:
         pass
     
     def factorial(self, n):
+        if n < 0:
+            return None
         if n == 0:
             return 1
 
