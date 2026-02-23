@@ -4,6 +4,8 @@ class Logica:
     """
     
     def AND(self, a, b):
+        # True solo si ambos son True
+        return bool(a) and bool(b)
         """
         Implementa la operación lógica AND.
         
@@ -17,6 +19,8 @@ class Logica:
         pass
     
     def OR(self, a, b):
+        # True si al menos uno es True
+        return bool(a) or bool(b)
         """
         Implementa la operación lógica OR.
         
@@ -30,6 +34,8 @@ class Logica:
         pass
     
     def NOT(self, a):
+        # Niega el valor
+        return not bool(a)
         """
         Implementa la operación lógica NOT.
         
@@ -42,6 +48,8 @@ class Logica:
         pass
     
     def XOR(self, a, b):
+        # True si son diferentes
+        return bool(a) != bool(b)
         """
         Implementa la operación lógica XOR (OR exclusivo).
         
@@ -55,6 +63,8 @@ class Logica:
         pass
     
     def NAND(self, a, b):
+        # Negación de AND
+        return not (bool(a) and bool(b))
         """
         Implementa la operación lógica NAND (NOT AND).
         
@@ -68,6 +78,8 @@ class Logica:
         pass
     
     def NOR(self, a, b):
+        # Negación de OR
+        return not (bool(a) or bool(b))
         """
         Implementa la operación lógica NOR (NOT OR).
         
@@ -81,6 +93,8 @@ class Logica:
         pass
     
     def XNOR(self, a, b):
+        # Negación de XOR (True si son iguales)
+        return bool(a) == bool(b)
         """
         Implementa la operación lógica XNOR (NOT XOR).
         
@@ -94,6 +108,8 @@ class Logica:
         pass
     
     def implicacion(self, a, b):
+        # a -> b es equivalente a (not a) or b
+        return (not bool(a)) or bool(b)
         """
         Implementa la operación lógica de implicación (a -> b).
         
@@ -107,6 +123,8 @@ class Logica:
         pass
     
     def bi_implicacion(self, a, b):
+        # a <-> b es equivalente a (a == b)
+        return bool(a) == bool(b)
         """
         Implementa la operación lógica de bi-implicación (a <-> b).
         
